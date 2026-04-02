@@ -3,18 +3,18 @@ import Link from "next/link";
 const serviceTimes = [
   {
     day: "Sunday",
-    time: "10:00 AM",
+    time: "10:30 AM",
     detail: "Sunday Celebration Service",
   },
   {
-    day: "Wednesday",
+    day: "Tuesday",
     time: "6:30 PM",
     detail: "Midweek Bible Study",
   },
   {
-    day: "Friday",
-    time: "7:00 PM",
-    detail: "Prayer and Worship Night",
+    day: "Thursday",
+    time: "6:30 PM",
+    detail: "Digging Deep",
   },
 ];
 

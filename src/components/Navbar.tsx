@@ -58,11 +58,24 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { label: "Facebook", href: "https://facebook.com", icon: "f" },
-  { label: "Twitter", href: "https://twitter.com", icon: "x" },
-  { label: "Instagram", href: "https://instagram.com", icon: "ig" },
-  { label: "YouTube", href: "https://youtube.com", icon: "yt" },
-  { label: "LinkedIn", href: "https://linkedin.com", icon: "in" },
+  {
+    label: "Facebook",
+    href: "https://facebook.com",
+    path: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z",
+    stroke: false,
+  },
+  {
+    label: "Twitter",
+    href: "https://twitter.com",
+    path: "M4 4l16 16M4 20L20 4",
+    stroke: true,
+  },
+  {
+    label: "Instagram",
+    href: "https://instagram.com",
+    path: "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z",
+    stroke: false,
+  },
 ];
 
 export default function Navbar() {
@@ -79,26 +92,7 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full shadow-sm">
-      <div
-        className="hidden md:block"
-        style={{ backgroundColor: "#1E4D9B", color: "#FFFFFF" }}
-      >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 text-xs sm:px-6 lg:px-8">
-          <div className="font-medium tracking-[0.12em]">
-            01382 223101 <span className="px-2 text-white/50">|</span> 07827
-            922056
-          </div>
-          <Link
-            href="/giving"
-            className="rounded-full border px-4 py-1.5 text-[11px] font-bold tracking-[0.24em] transition hover:bg-white hover:text-[#1E4D9B]"
-            style={{ borderColor: "#FFFFFF", color: "#FFFFFF" }}
-          >
-            DONATE
-          </Link>
-        </div>
-      </div>
-
-      <div className="border-b border-slate-200 bg-white">
+      <div className="border-b border-slate-200" style={{ backgroundColor: "#1E4D9B" }}>
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
           <Link href="/" className="flex min-w-0 items-center gap-3">
             <span
@@ -108,31 +102,43 @@ export default function Navbar() {
               R
             </span>
             <span className="min-w-0">
-              <span className="block truncate text-base font-extrabold text-slate-950 sm:text-lg">
+              <span className="block truncate text-base font-extrabold text-white sm:text-lg">
                 RCCG Livingspring
               </span>
               <span
                 className="block truncate text-xs font-medium sm:text-sm"
-                style={{ color: "#1E4D9B" }}
+                style={{ color: "#93C5FD" }}
               >
                 Church Dundee
               </span>
             </span>
           </Link>
 
-          <div className="hidden items-center gap-3 lg:flex">
+          <div className="hidden items-center lg:flex" style={{ gap: 10 }}>
             {socialLinks.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
                 aria-label={item.label}
-                className="flex h-9 min-w-9 items-center justify-center rounded-full border text-[11px] font-bold uppercase transition hover:-translate-y-0.5"
+                className="flex shrink-0 items-center justify-center rounded-full border-white/40 text-white transition-all duration-200 hover:border-white hover:bg-white/[0.15]"
                 style={{
-                  borderColor: "#D0D5DD",
-                  color: "#1E4D9B",
+                  width: 38,
+                  height: 38,
+                  border: "1.5px solid rgba(255,255,255,0.4)",
                 }}
               >
-                {item.icon}
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill={item.stroke ? "none" : "currentColor"}
+                  stroke={item.stroke ? "currentColor" : "none"}
+                  strokeWidth={item.stroke ? 2 : 0}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d={item.path} />
+                </svg>
               </Link>
             ))}
           </div>
@@ -143,21 +149,21 @@ export default function Navbar() {
             aria-label={isOpen ? "Close menu" : "Open menu"}
             onClick={() => setIsOpen((open) => !open)}
             className="inline-flex items-center gap-3 rounded-full border px-4 py-2 text-sm font-semibold tracking-[0.18em] lg:hidden"
-            style={{ borderColor: "#D0D5DD", color: "#1E4D9B" }}
+            style={{ borderColor: "#FFFFFF", color: "#FFFFFF" }}
           >
             <span>MENU</span>
             <span className="flex flex-col gap-1">
               <span
                 className={`h-0.5 w-4 transition ${isOpen ? "translate-y-1.5 rotate-45" : ""}`}
-                style={{ backgroundColor: "#1E4D9B" }}
+                style={{ backgroundColor: "#FFFFFF" }}
               />
               <span
                 className={`h-0.5 w-4 transition ${isOpen ? "opacity-0" : ""}`}
-                style={{ backgroundColor: "#1E4D9B" }}
+                style={{ backgroundColor: "#FFFFFF" }}
               />
               <span
                 className={`h-0.5 w-4 transition ${isOpen ? "-translate-y-1.5 -rotate-45" : ""}`}
-                style={{ backgroundColor: "#1E4D9B" }}
+                style={{ backgroundColor: "#FFFFFF" }}
               />
             </span>
           </button>
@@ -177,34 +183,47 @@ export default function Navbar() {
               <Link
                 href={link.href}
                 className={`flex items-center justify-center gap-1.5 px-2 py-4 text-center text-[11px] font-semibold tracking-[0.16em] transition xl:text-xs ${
-                  link.featured ? "rounded-full px-5 py-2.5 self-center" : ""
+                  link.featured
+                    ? "self-center rounded-full px-5 py-2 hover:!bg-[#267A45]"
+                    : link.label === "CONTACT US"
+                      ? "self-center rounded-full px-5 py-2 font-bold hover:!bg-[#2558B0]"
+                      : ""
                 }`}
                 style={
                   link.featured
                     ? {
-                        backgroundColor: "#FFFFFF",
-                        color: "#0F1E35",
-                        boxShadow: "0 8px 24px rgba(15, 30, 53, 0.12)",
+                        backgroundColor: "#1E5C35",
+                        color: "#FFFFFF",
                       }
-                    : {
-                        color: isActiveGroup(link.href, link.children)
-                          ? "#1E4D9B"
-                          : "#0F1E35",
-                      }
+                    : link.label === "CONTACT US"
+                      ? {
+                          backgroundColor: "#1E4D9B",
+                          color: "#FFFFFF",
+                          border: "none",
+                          outline: "none",
+                        }
+                      : {
+                          color: isActiveGroup(link.href, link.children)
+                            ? "#1E4D9B"
+                            : "#0F1E35",
+                        }
                 }
               >
                 <span
-                  className={`${link.featured ? "" : "relative inline-flex pb-1"} group-hover:text-[#1E5C35]`}
+                  className={`${link.featured || link.label === "CONTACT US" ? "" : "relative inline-flex pb-1"} ${
+                    link.label === "CONTACT US" ? "" : "group-hover:text-[#1E5C35]"
+                  }`}
                   style={{
-                    color: link.featured
-                      ? "#0F1E35"
-                      : isActiveGroup(link.href, link.children)
-                        ? "#1E4D9B"
-                        : undefined,
+                    color:
+                      link.featured || link.label === "CONTACT US"
+                        ? "#FFFFFF"
+                        : isActiveGroup(link.href, link.children)
+                          ? "#1E4D9B"
+                          : undefined,
                   }}
                 >
                   {link.label}
-                  {!link.featured ? (
+                  {!link.featured && link.label !== "CONTACT US" ? (
                     <span
                       className="absolute bottom-0 left-0 h-0.5 w-full origin-center scale-x-0 transition-transform duration-200 group-hover:scale-x-100"
                       style={{ backgroundColor: "#1E5C35" }}
@@ -292,17 +311,23 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className={`flex items-center justify-between rounded-2xl px-3 py-3 text-sm font-bold tracking-[0.08em] transition hover:bg-slate-50 ${
-                      link.featured ? "text-white" : ""
+                    className={`flex min-h-[44px] items-center justify-between rounded-2xl px-3 py-3 text-sm font-bold tracking-[0.08em] transition ${
+                      link.featured
+                        ? "text-white hover:!bg-[#267A45]"
+                        : link.label === "CONTACT US"
+                          ? "text-white hover:!bg-[#2558B0]"
+                          : "hover:bg-slate-50"
                     }`}
                     style={
                       link.featured
-                        ? { backgroundColor: "#1E4D9B" }
-                        : {
-                            color: isActiveGroup(link.href, link.children)
-                              ? "#1E4D9B"
-                              : "#0F1E35",
-                          }
+                        ? { backgroundColor: "#1E5C35" }
+                        : link.label === "CONTACT US"
+                          ? { backgroundColor: "#1E4D9B" }
+                          : {
+                              color: isActiveGroup(link.href, link.children)
+                                ? "#1E4D9B"
+                                : "#0F1E35",
+                            }
                     }
                   >
                     <span>{link.label}</span>
@@ -346,16 +371,32 @@ export default function Navbar() {
               ))}
             </div>
 
-            <div className="mt-5 flex flex-wrap gap-3">
+            <div className="mt-5 flex flex-wrap" style={{ gap: 10 }}>
               {socialLinks.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
                   aria-label={item.label}
-                  className="flex h-10 min-w-10 items-center justify-center rounded-full border text-xs font-bold uppercase"
-                  style={{ borderColor: "#D0D5DD", color: "#1E4D9B" }}
+                  className="flex shrink-0 items-center justify-center rounded-full transition-all duration-200"
+                  style={{
+                    width: 38,
+                    height: 38,
+                    border: "1.5px solid rgba(255,255,255,0.4)",
+                    color: "#FFFFFF",
+                  }}
                 >
-                  {item.icon}
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill={item.stroke ? "none" : "currentColor"}
+                    stroke={item.stroke ? "currentColor" : "none"}
+                    strokeWidth={item.stroke ? 2 : 0}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d={item.path} />
+                  </svg>
                 </Link>
               ))}
             </div>

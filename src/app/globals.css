@@ -16,12 +16,22 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 html {
+  margin: 0;
+  padding: 0;
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
+  padding: 0;
   min-width: 320px;
   font-family: "Manrope", sans-serif;
   color: var(--color-church-ink);

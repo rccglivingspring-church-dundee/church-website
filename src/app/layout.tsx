@@ -15,9 +15,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="text-church-ink antialiased">
+      <body
+        className="m-0 overflow-x-hidden p-0 text-church-ink antialiased"
+        style={{ margin: 0, padding: 0 }}
+      >
         <Navbar />
-        <main>{children}</main>
+        <main className="m-0 p-0 pb-0" style={{ margin: 0, padding: 0 }}>
+          {children}
+        </main>
       </body>
     </html>
   );

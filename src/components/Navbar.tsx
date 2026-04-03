@@ -58,6 +58,8 @@ const navLinks = [
   { label: "CONTACT US", href: "/contact" },
 ];
 
+const centreLinks = navLinks.filter((l) => !l.featured && l.label !== "CONTACT US");
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [openMobile, setOpenMobile] = useState<string | null>(null);
@@ -74,125 +76,142 @@ export default function Navbar() {
   const close = () => { setIsOpen(false); setOpenMobile(null); };
 
   return (
-    <header className="sticky top-0 z-50 w-full" style={{ backgroundColor: "#0F1E35" }}>
-
-      {/* ── TOP BAR (logo + hamburger on mobile, full nav on desktop) ── */}
+    <header
+      className="sticky top-0 z-50 w-full"
+      style={{ backgroundColor: "#ffffff", height: 80, boxShadow: "0 2px 8px rgba(0,0,0,0.08)" }}
+    >
+      {/* ── SINGLE BAR ── */}
       <div
-        className="flex w-full items-center justify-between"
-        style={{ height: 70, padding: "0 24px" }}
+        className="flex h-full items-center justify-between"
+        style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}
       >
-        {/* Logo + church name */}
-        <Link href="/" className="flex shrink-0 items-center gap-3" onClick={close}>
+
+        {/* LEFT: Logo + name */}
+        <Link href="/" onClick={close} className="flex shrink-0 items-center gap-2.5">
           <Image
             src="/logo.png"
             alt="RCCG Livingspring Church Dundee Logo"
-            width={55}
-            height={55}
-            style={{ objectFit: "contain", flexShrink: 0 }}
+            width={150}
+            height={150}
+            style={{ objectFit: "contain", flexShrink: 0, overflow: "visible" }}
           />
-          <span>
+          <span className="hidden sm:block">
             <span
               className="block"
               style={{
-                color: "white",
+                color: "#0F1E35",
                 fontSize: 15,
                 fontWeight: 800,
                 textTransform: "uppercase",
-                letterSpacing: "0.05em",
-                textShadow: "1px 1px 0px #000, 2px 2px 4px rgba(0,0,0,0.5)",
+                letterSpacing: "0.04em",
+                textShadow: "none",
               }}
             >
               RCCG Livingspring
             </span>
             <span
               className="block"
-              style={{ color: "#9CA3AF", fontSize: 10, fontWeight: 400, fontStyle: "italic" }}
+              style={{ color: "#64748B", fontSize: 10, fontStyle: "italic" }}
             >
               Church Dundee
             </span>
           </span>
         </Link>
 
-        {/* Desktop nav links */}
+        {/* CENTRE: Nav links — desktop */}
         <nav
           aria-label="Primary navigation"
           className="hidden items-center lg:flex"
-          style={{ gap: 24 }}
+          style={{ gap: 28 }}
         >
-          {navLinks.map((link) => (
+          {centreLinks.map((link) => (
             <div key={link.label} className="group relative flex items-center">
-              {link.featured ? (
-                <Link
-                  href={link.href}
-                  className="inline-flex items-center rounded-full text-white transition hover:opacity-90"
-                  style={{
-                    backgroundColor: "#2E7D4F",
-                    padding: "8px 20px",
-                    fontSize: 12,
-                    fontWeight: 700,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.05em",
-                  }}
-                >
-                  {link.label}
-                </Link>
-              ) : (
-                <>
-                  <Link
-                    href={link.href}
-                    className="flex items-center gap-1 transition hover:opacity-75"
-                    style={{
-                      color: isActiveGroup(link.href, link.children) ? "#2E7D4F" : "white",
-                      fontSize: 12,
-                      fontWeight: 600,
-                      textTransform: "uppercase",
-                      letterSpacing: "0.05em",
-                    }}
+              <Link
+                href={link.href}
+                className="flex items-center gap-1 transition-opacity hover:opacity-75"
+                style={{
+                  color: isActiveGroup(link.href, link.children) ? "#1E4D9B" : "#0F1E35",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.04em",
+                }}
+              >
+                {link.label}
+                {link.children ? (
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 20 20"
+                    style={{ width: 12, height: 12, flexShrink: 0 }}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   >
-                    {link.label}
-                    {link.children ? (
-                      <svg
-                        aria-hidden="true"
-                        viewBox="0 0 20 20"
-                        style={{ width: 12, height: 12, flexShrink: 0 }}
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="m5 7 5 5 5-5" />
-                      </svg>
-                    ) : null}
-                  </Link>
+                    <path d="m5 7 5 5 5-5" />
+                  </svg>
+                ) : null}
+              </Link>
 
-                  {link.children ? (
-                    <div className="pointer-events-none absolute left-1/2 top-full z-30 w-64 -translate-x-1/2 pt-2 opacity-0 transition duration-200 group-hover:pointer-events-auto group-hover:opacity-100">
-                      <div
-                        className="overflow-hidden rounded-2xl border py-2 shadow-[0_22px_44px_rgba(0,0,0,0.35)]"
-                        style={{ backgroundColor: "#1A2C45", borderColor: "#263952" }}
+              {link.children ? (
+                <div className="pointer-events-none absolute left-1/2 top-full z-30 w-60 -translate-x-1/2 pt-2 opacity-0 transition duration-200 group-hover:pointer-events-auto group-hover:opacity-100">
+                  <div
+                    className="overflow-hidden rounded-2xl border py-2 shadow-[0_22px_44px_rgba(0,0,0,0.3)]"
+                    style={{ backgroundColor: "#1A2C45", borderColor: "#263952" }}
+                  >
+                    {link.children.map((child) => (
+                      <Link
+                        key={child.label}
+                        href={child.href}
+                        className="flex items-center border-l-4 px-4 py-3 text-sm font-medium transition-colors duration-200 hover:bg-[#2E7D4F] hover:text-white"
+                        style={{
+                          borderLeftColor: isActiveLink(child.href) ? "#2E7D4F" : "transparent",
+                          color: isActiveLink(child.href) ? "#4ADE80" : "#CBD5E1",
+                        }}
                       >
-                        {link.children.map((child) => (
-                          <Link
-                            key={child.label}
-                            href={child.href}
-                            className="flex items-center border-l-4 px-4 py-3 text-sm font-medium transition-colors duration-200 hover:bg-[#2E7D4F] hover:text-white"
-                            style={{
-                              borderLeftColor: isActiveLink(child.href) ? "#2E7D4F" : "transparent",
-                              color: isActiveLink(child.href) ? "#4ADE80" : "#CBD5E1",
-                            }}
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  ) : null}
-                </>
-              )}
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
             </div>
           ))}
         </nav>
+
+        {/* RIGHT: GIVING + CONTACT US — desktop */}
+        <div className="hidden items-center gap-3 lg:flex">
+          <Link
+            href="/giving"
+            className="inline-flex items-center rounded-full text-white transition hover:opacity-90"
+            style={{
+              backgroundColor: "#2E7D4F",
+              padding: "8px 20px",
+              fontSize: 12,
+              fontWeight: 700,
+              textTransform: "uppercase",
+              letterSpacing: "0.04em",
+            }}
+          >
+            GIVING
+          </Link>
+          <Link
+            href="/contact"
+            className="inline-flex items-center rounded-full transition hover:bg-[#1E4D9B] hover:text-white"
+            style={{
+              border: "2px solid #1E4D9B",
+              color: "#1E4D9B",
+              padding: "6px 20px",
+              fontSize: 12,
+              fontWeight: 700,
+              textTransform: "uppercase",
+              letterSpacing: "0.04em",
+            }}
+          >
+            CONTACT US
+          </Link>
+        </div>
 
         {/* Mobile hamburger */}
         <button
@@ -204,25 +223,25 @@ export default function Navbar() {
           style={{ width: 40, height: 40 }}
         >
           <span
-            className="block h-0.5 w-6 bg-white transition-all duration-300"
+            className="block h-0.5 w-6 bg-[#0F1E35] transition-all duration-300"
             style={{ transform: isOpen ? "translateY(8px) rotate(45deg)" : "none" }}
           />
           <span
-            className="block h-0.5 w-6 bg-white transition-all duration-300"
+            className="block h-0.5 w-6 bg-[#0F1E35] transition-all duration-300"
             style={{ opacity: isOpen ? 0 : 1 }}
           />
           <span
-            className="block h-0.5 w-6 bg-white transition-all duration-300"
+            className="block h-0.5 w-6 bg-[#0F1E35] transition-all duration-300"
             style={{ transform: isOpen ? "translateY(-8px) rotate(-45deg)" : "none" }}
           />
         </button>
       </div>
 
-      {/* ── MOBILE FULL MENU ── */}
+      {/* ── MOBILE MENU ── */}
       {isOpen ? (
         <div
           className="w-full lg:hidden"
-          style={{ backgroundColor: "#0F1E35", borderTop: "1px solid rgba(255,255,255,0.08)" }}
+          style={{ backgroundColor: "#ffffff", borderTop: "1px solid rgba(0,0,0,0.08)" }}
         >
           {navLinks.map((link) => (
             <div key={link.label}>
@@ -239,21 +258,21 @@ export default function Navbar() {
                       fontWeight: 700,
                       textTransform: "uppercase",
                       letterSpacing: "0.05em",
-                      borderBottom: "none",
                     }}
                   >
                     {link.label}
                   </Link>
                 </div>
               ) : link.label === "CONTACT US" ? (
-                <div style={{ padding: "8px 16px" }}>
+                <div style={{ padding: "8px 16px 16px" }}>
                   <Link
                     href={link.href}
                     onClick={close}
-                    className="flex items-center justify-center rounded-full text-white transition hover:opacity-90"
+                    className="flex items-center justify-center rounded-full transition hover:bg-[#1E4D9B] hover:text-white"
                     style={{
-                      backgroundColor: "#1E4D9B",
-                      padding: "14px 24px",
+                      border: "2px solid #1E4D9B",
+                      color: "#1E4D9B",
+                      padding: "12px 24px",
                       fontSize: 14,
                       fontWeight: 700,
                       textTransform: "uppercase",
@@ -265,7 +284,6 @@ export default function Navbar() {
                 </div>
               ) : link.children ? (
                 <div>
-                  {/* Accordion header */}
                   <button
                     type="button"
                     onClick={() =>
@@ -274,8 +292,8 @@ export default function Navbar() {
                     className="flex w-full items-center justify-between"
                     style={{
                       padding: "16px 24px",
-                      borderBottom: "1px solid rgba(255,255,255,0.08)",
-                      color: isActiveGroup(link.href, link.children) ? "#4ADE80" : "white",
+                      borderBottom: "1px solid rgba(0,0,0,0.08)",
+                      color: isActiveGroup(link.href, link.children) ? "#1E4D9B" : "#0F1E35",
                       fontSize: 14,
                       fontWeight: 700,
                       textTransform: "uppercase",
@@ -304,20 +322,19 @@ export default function Navbar() {
                     </svg>
                   </button>
 
-                  {/* Submenu */}
                   {openMobile === link.label ? (
-                    <div style={{ backgroundColor: "rgba(0,0,0,0.2)" }}>
+                    <div style={{ backgroundColor: "#F8FAFC" }}>
                       {link.children.map((child) => (
                         <Link
                           key={child.label}
                           href={child.href}
                           onClick={close}
-                          className="flex items-center transition hover:text-white"
+                          className="flex items-center transition hover:text-[#1E4D9B]"
                           style={{
                             padding: "12px 24px 12px 44px",
                             borderLeft: "3px solid #2E7D4F",
-                            borderBottom: "1px solid rgba(255,255,255,0.06)",
-                            color: isActiveLink(child.href) ? "#4ADE80" : "#CBD5E1",
+                            borderBottom: "1px solid rgba(0,0,0,0.06)",
+                            color: isActiveLink(child.href) ? "#1E4D9B" : "#374151",
                             fontSize: 13,
                             fontWeight: 400,
                           }}
@@ -329,15 +346,14 @@ export default function Navbar() {
                   ) : null}
                 </div>
               ) : (
-                /* Plain link (HOME) */
                 <Link
                   href={link.href}
                   onClick={close}
-                  className="flex w-full items-center transition hover:text-green-400"
+                  className="flex w-full items-center transition hover:text-[#1E4D9B]"
                   style={{
                     padding: "16px 24px",
-                    borderBottom: "1px solid rgba(255,255,255,0.08)",
-                    color: isActiveGroup(link.href, link.children) ? "#4ADE80" : "white",
+                    borderBottom: "1px solid rgba(0,0,0,0.08)",
+                    color: isActiveGroup(link.href, link.children) ? "#1E4D9B" : "#0F1E35",
                     fontSize: 14,
                     fontWeight: 700,
                     textTransform: "uppercase",

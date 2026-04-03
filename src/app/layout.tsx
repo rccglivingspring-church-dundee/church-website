@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import CloudBackground from "@/components/CloudBackground";
+import SiteFooter from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "RCCG Livingspring Church Dundee",
@@ -25,6 +26,7 @@ export default function RootLayout({
         <main className="m-0 p-0 pb-0" style={{ margin: 0, padding: 0 }}>
           {children}
         </main>
+        <SiteFooter />
       </body>
     </html>
   );

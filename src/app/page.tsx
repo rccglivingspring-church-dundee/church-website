@@ -22,36 +22,27 @@ const quickLinks = [
   {
     title: "Watch Sermons",
     description: "Catch up on recent messages and practical Bible teaching.",
-    href: "/sermons",
+    href: "/sermons/video-sermons",
     icon: "PLAY",
   },
   {
     title: "Give Online",
     description: "Support the ministry securely and help us serve our city.",
-    href: "/give",
+    href: "/giving",
     icon: "GIVE",
   },
   {
     title: "Events",
     description: "See upcoming gatherings, church activities, and special services.",
-    href: "/events",
+    href: "/events/upcoming-events",
     icon: "DATE",
   },
   {
     title: "Prayer Request",
     description: "Share your prayer needs and let our team stand with you.",
-    href: "/contact",
+    href: "/resources/prayer-requests",
     icon: "HOPE",
   },
-];
-
-const footerLinks = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Sermons", href: "/sermons" },
-  { label: "Events", href: "/events" },
-  { label: "Find Us", href: "/find-us" },
-  { label: "Contact", href: "/contact" },
 ];
 
 const serviceCardTheme: Record<
@@ -75,34 +66,28 @@ const serviceCardTheme: Record<
   },
 };
 
-const quickLinkCardTheme: Record<string, { gradient: string; glow: string; glowHover: string }> = {
+const quickLinkCardTheme: Record<string, { gradient: string; glow: string }> = {
   "Watch Sermons": {
     gradient: "linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%)",
     glow: "0 20px 40px rgba(124,58,237,0.4)",
-    glowHover: "0 32px 56px rgba(124,58,237,0.6)",
   },
   "Give Online": {
     gradient: "linear-gradient(135deg, #EA580C 0%, #DC2626 100%)",
     glow: "0 20px 40px rgba(234,88,12,0.4)",
-    glowHover: "0 32px 56px rgba(234,88,12,0.6)",
   },
   Events: {
     gradient: "linear-gradient(135deg, #0891B2 0%, #0E7490 100%)",
     glow: "0 20px 40px rgba(8,145,178,0.4)",
-    glowHover: "0 32px 56px rgba(8,145,178,0.6)",
   },
   "Prayer Request": {
     gradient: "linear-gradient(135deg, #059669 0%, #047857 100%)",
     glow: "0 20px 40px rgba(5,150,105,0.4)",
-    glowHover: "0 32px 56px rgba(5,150,105,0.6)",
   },
 };
 
 export default function Home() {
   return (
     <div style={{ margin: 0, padding: 0, position: "relative" }}>
-
-      {/* ── HERO ── */}
       <section
         style={{ position: "relative", overflow: "hidden" }}
         className="flex min-h-[400px] items-center text-white sm:min-h-[560px]"
@@ -124,7 +109,6 @@ export default function Home() {
           <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
 
-        {/* Dark overlay */}
         <div
           style={{
             position: "absolute",
@@ -134,18 +118,18 @@ export default function Home() {
           }}
         />
 
-        {/* Content */}
         <div
           style={{ position: "relative", zIndex: 2, width: "100%" }}
           className="mx-auto max-w-7xl px-4 py-10 sm:px-10 sm:py-16 lg:px-16 lg:py-20"
         >
           <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
-
-            {/* Left: Church name + buttons */}
             <div className="max-w-2xl">
               <span
                 className="inline-flex rounded-full border px-4 py-1.5 text-xs font-bold uppercase tracking-widest"
-                style={{ borderColor: "rgba(255,255,255,0.3)", color: "rgba(255,255,255,0.85)" }}
+                style={{
+                  borderColor: "rgba(255,255,255,0.3)",
+                  color: "rgba(255,255,255,0.85)",
+                }}
               >
                 Welcome Home
               </span>
@@ -159,8 +143,8 @@ export default function Home() {
                 className="mt-5 text-lg leading-8 sm:text-xl"
                 style={{ color: "rgba(255,255,255,0.82)" }}
               >
-                A vibrant church family where worship is heartfelt, the Word is
-                taught clearly, and every person is welcomed with love and purpose.
+                A vibrant church family where worship is heartfelt, the Word is taught
+                clearly, and every person is welcomed with love and purpose.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link
@@ -180,21 +164,20 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right: Service times card */}
             <div className="w-full lg:max-w-sm">
               <div
                 className="rounded-3xl p-6"
                 style={{
                   position: "relative",
                   overflow: "hidden",
-                  background: "linear-gradient(135deg, rgba(124,58,237,0.25) 0%, rgba(234,88,12,0.15) 50%, rgba(8,145,178,0.25) 100%)",
+                  background:
+                    "linear-gradient(135deg, rgba(124,58,237,0.25) 0%, rgba(234,88,12,0.15) 50%, rgba(8,145,178,0.25) 100%)",
                   backdropFilter: "blur(12px)",
                   border: "1px solid rgba(255,255,255,0.2)",
                   boxShadow: "0 25px 50px rgba(0,0,0,0.3)",
                   borderRadius: "2rem",
                 }}
               >
-                {/* Diagonal stripe pattern top-right */}
                 <div
                   style={{
                     position: "absolute",
@@ -209,7 +192,6 @@ export default function Home() {
                     zIndex: 0,
                   }}
                 />
-                {/* Glowing circle — top right */}
                 <div
                   style={{
                     position: "absolute",
@@ -224,7 +206,6 @@ export default function Home() {
                     zIndex: 0,
                   }}
                 />
-                {/* Chevron accent top-right */}
                 <div
                   style={{
                     position: "absolute",
@@ -240,9 +221,9 @@ export default function Home() {
                     { top: 0, opacity: "rgba(234,179,8,0.6)" },
                     { top: 12, opacity: "rgba(234,179,8,0.4)" },
                     { top: 24, opacity: "rgba(234,179,8,0.2)" },
-                  ] as { top: number; opacity: string }[]).map((chevron, i) => (
+                  ] as { top: number; opacity: string }[]).map((chevron, index) => (
                     <div
-                      key={i}
+                      key={index}
                       style={{
                         position: "absolute",
                         top: chevron.top,
@@ -256,7 +237,6 @@ export default function Home() {
                     />
                   ))}
                 </div>
-                {/* Glowing circle — bottom left */}
                 <div
                   style={{
                     position: "absolute",
@@ -271,7 +251,6 @@ export default function Home() {
                     zIndex: 0,
                   }}
                 />
-                {/* Card content */}
                 <div style={{ position: "relative", zIndex: 2 }}>
                   <p
                     className="text-xs font-bold uppercase tracking-widest"
@@ -280,16 +259,24 @@ export default function Home() {
                     Join Us
                   </p>
                   <div className="mt-5 flex flex-col gap-3">
-                    {serviceTimes.map((s) => {
-                      const rowStyle: Record<string, { border: string; timeColor: string }> = {
-                        Sunday:   { border: "3px solid #F5C518", timeColor: "#F5C518" },
-                        Tuesday:  { border: "3px solid #34D399", timeColor: "#34D399" },
+                    {serviceTimes.map((service) => {
+                      const rowStyle: Record<
+                        string,
+                        { border: string; timeColor: string }
+                      > = {
+                        Sunday: { border: "3px solid #F5C518", timeColor: "#F5C518" },
+                        Tuesday: { border: "3px solid #34D399", timeColor: "#34D399" },
                         Thursday: { border: "3px solid #60A5FA", timeColor: "#60A5FA" },
                       };
-                      const row = rowStyle[s.day] ?? { border: "3px solid rgba(255,255,255,0.3)", timeColor: "#D8F3E2" };
+
+                      const row = rowStyle[service.day] ?? {
+                        border: "3px solid rgba(255,255,255,0.3)",
+                        timeColor: "#D8F3E2",
+                      };
+
                       return (
                         <div
-                          key={s.day}
+                          key={service.day}
                           className="rounded-2xl p-4"
                           style={{
                             backgroundColor: "rgba(255,255,255,0.08)",
@@ -298,13 +285,19 @@ export default function Home() {
                         >
                           <div className="flex items-center justify-between gap-3">
                             <div>
-                              <p className="font-bold" style={{ color: "white" }}>{s.day}</p>
-                              <p className="text-xs" style={{ color: "rgba(255,255,255,0.65)" }}>
-                                {s.detail}
+                              <p className="font-bold text-white">{service.day}</p>
+                              <p
+                                className="text-xs"
+                                style={{ color: "rgba(255,255,255,0.65)" }}
+                              >
+                                {service.detail}
                               </p>
                             </div>
-                            <p className="font-extrabold text-sm" style={{ color: row.timeColor }}>
-                              {s.time}
+                            <p
+                              className="text-sm font-extrabold"
+                              style={{ color: row.timeColor }}
+                            >
+                              {service.time}
                             </p>
                           </div>
                         </div>
@@ -314,13 +307,11 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* ── SERVICE TIMES ── */}
-      <section className="px-4 pt-7 pb-4 sm:px-10 lg:px-16">
+      <section className="px-4 pb-4 pt-7 sm:px-10 lg:px-16">
         <div className="mx-auto max-w-7xl">
           <p
             className="text-xs font-bold uppercase tracking-widest"
@@ -332,20 +323,18 @@ export default function Home() {
             Gather with us throughout the week
           </h2>
           <p className="mt-2 text-sm leading-6 text-slate-500 sm:text-base sm:leading-7">
-            Whether you are visiting for the first time or looking for a church
-            family in Dundee, there is a place for you here.
+            Whether you are visiting for the first time or looking for a church family
+            in Dundee, there is a place for you here.
           </p>
 
-          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4">
-            {serviceTimes.map((s) => (
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+            {serviceTimes.map((service) => (
               <article
-                key={s.day}
-                className="relative flex flex-col justify-between overflow-hidden rounded-[2rem] text-white"
+                key={service.day}
+                className="relative flex min-h-[126px] flex-col justify-between overflow-hidden rounded-[2rem] p-5 text-white"
                 style={{
-                  minHeight: "126px",
-                  padding: "1.25rem",
-                  background: serviceCardTheme[s.day].gradient,
-                  boxShadow: serviceCardTheme[s.day].glow,
+                  background: serviceCardTheme[service.day].gradient,
+                  boxShadow: serviceCardTheme[service.day].glow,
                 }}
               >
                 <div
@@ -363,23 +352,24 @@ export default function Home() {
                 <div className="relative">
                   <p
                     className="text-xs font-bold uppercase tracking-widest"
-                    style={{ color: serviceCardTheme[s.day].accent }}
+                    style={{ color: serviceCardTheme[service.day].accent }}
                   >
-                    {s.day}
+                    {service.day}
                   </p>
                 </div>
                 <p className="relative text-2xl font-extrabold leading-none text-white sm:text-3xl">
-                  {s.time}
+                  {service.time}
                 </p>
-                <p className="relative text-xs text-white/80 sm:text-sm">{s.detail}</p>
+                <p className="relative text-xs text-white/80 sm:text-sm">
+                  {service.detail}
+                </p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── QUICK LINKS ── */}
-      <section className="px-4 pt-4 pb-6 sm:px-10 lg:px-16">
+      <section className="px-4 pb-6 pt-4 sm:px-10 lg:px-16">
         <div
           className="mx-auto max-w-7xl rounded-3xl px-4 py-8 sm:px-10 sm:py-10 lg:px-12"
           style={{ backgroundColor: "#F0F4F8" }}
@@ -410,67 +400,96 @@ export default function Home() {
                   borderBottom: "1px solid rgba(0,0,0,0.2)",
                 }}
               >
-                {/* Diagonal stripe pattern */}
-                <div style={{
-                  position: "absolute",
-                  inset: 0,
-                  background: "repeating-linear-gradient(45deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 2px, transparent 2px, transparent 14px)",
-                  zIndex: 0,
-                  pointerEvents: "none"
-                }} />
-                {/* Top right gold glow */}
-                <div style={{
-                  position: "absolute",
-                  top: "-30px",
-                  right: "-10px",
-                  width: "120px",
-                  height: "120px",
-                  background: "rgba(245,197,24,0.25)",
-                  borderRadius: "50%",
-                  filter: "blur(35px)",
-                  zIndex: 0,
-                  pointerEvents: "none"
-                }} />
-                {/* Left green glow */}
-                <div style={{
-                  position: "absolute",
-                  top: "30%",
-                  left: "-30px",
-                  width: "100px",
-                  height: "100px",
-                  background: "rgba(52,211,153,0.2)",
-                  borderRadius: "50%",
-                  filter: "blur(30px)",
-                  zIndex: 0,
-                  pointerEvents: "none"
-                }} />
-                {/* Bottom blue glow */}
-                <div style={{
-                  position: "absolute",
-                  bottom: "-20px",
-                  right: "20%",
-                  width: "110px",
-                  height: "110px",
-                  background: "rgba(96,165,250,0.2)",
-                  borderRadius: "50%",
-                  filter: "blur(30px)",
-                  zIndex: 0,
-                  pointerEvents: "none"
-                }} />
-                {/* Chevron arrows — top right */}
-                <div style={{
-                  position: "absolute",
-                  top: "16px",
-                  right: "16px",
-                  display: "flex",
-                  gap: "4px",
-                  zIndex: 1
-                }}>
-                  <div style={{ width: "10px", height: "16px", borderRight: "3px solid rgba(245,197,24,0.7)", borderTop: "3px solid rgba(245,197,24,0.7)", transform: "rotate(45deg)" }} />
-                  <div style={{ width: "10px", height: "16px", borderRight: "3px solid rgba(245,197,24,0.45)", borderTop: "3px solid rgba(245,197,24,0.45)", transform: "rotate(45deg)" }} />
-                  <div style={{ width: "10px", height: "16px", borderRight: "3px solid rgba(245,197,24,0.2)", borderTop: "3px solid rgba(245,197,24,0.2)", transform: "rotate(45deg)" }} />
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background:
+                      "repeating-linear-gradient(45deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 2px, transparent 2px, transparent 14px)",
+                    zIndex: 0,
+                    pointerEvents: "none",
+                  }}
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "-30px",
+                    right: "-10px",
+                    width: "120px",
+                    height: "120px",
+                    background: "rgba(245,197,24,0.25)",
+                    borderRadius: "50%",
+                    filter: "blur(35px)",
+                    zIndex: 0,
+                    pointerEvents: "none",
+                  }}
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "30%",
+                    left: "-30px",
+                    width: "100px",
+                    height: "100px",
+                    background: "rgba(52,211,153,0.2)",
+                    borderRadius: "50%",
+                    filter: "blur(30px)",
+                    zIndex: 0,
+                    pointerEvents: "none",
+                  }}
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: "-20px",
+                    right: "20%",
+                    width: "110px",
+                    height: "110px",
+                    background: "rgba(96,165,250,0.2)",
+                    borderRadius: "50%",
+                    filter: "blur(30px)",
+                    zIndex: 0,
+                    pointerEvents: "none",
+                  }}
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "16px",
+                    right: "16px",
+                    display: "flex",
+                    gap: "4px",
+                    zIndex: 1,
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "10px",
+                      height: "16px",
+                      borderRight: "3px solid rgba(245,197,24,0.7)",
+                      borderTop: "3px solid rgba(245,197,24,0.7)",
+                      transform: "rotate(45deg)",
+                    }}
+                  />
+                  <div
+                    style={{
+                      width: "10px",
+                      height: "16px",
+                      borderRight: "3px solid rgba(245,197,24,0.45)",
+                      borderTop: "3px solid rgba(245,197,24,0.45)",
+                      transform: "rotate(45deg)",
+                    }}
+                  />
+                  <div
+                    style={{
+                      width: "10px",
+                      height: "16px",
+                      borderRight: "3px solid rgba(245,197,24,0.2)",
+                      borderTop: "3px solid rgba(245,197,24,0.2)",
+                      transform: "rotate(45deg)",
+                    }}
+                  />
                 </div>
-                {/* Content */}
                 <div style={{ position: "relative", zIndex: 1 }}>
                   <span
                     style={{
@@ -514,8 +533,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── NEW HERE CTA ── */}
-      <section className="px-4 pt-4 pb-6 sm:px-10 lg:px-16">
+      <section className="px-4 pb-6 pt-4 sm:px-10 lg:px-16">
         <div
           className="mx-auto max-w-7xl rounded-3xl px-4 py-10 text-white sm:px-10 sm:py-12 lg:px-14"
           style={{
@@ -559,91 +577,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* ── FOOTER ── */}
-      <footer style={{ backgroundColor: "#10233F", margin: 0, padding: 0 }}>
-        <div className="mx-auto max-w-7xl px-6 py-8 sm:px-10 lg:px-16">
-          <div className="grid gap-8 text-center lg:grid-cols-3 lg:text-left">
-
-            {/* Col 1 */}
-            <div>
-              <div className="flex items-center justify-center gap-3 lg:justify-start">
-                <span
-                  className="flex h-9 w-9 items-center justify-center rounded-full text-sm font-extrabold text-white"
-                  style={{ backgroundColor: "#1E5C35" }}
-                >
-                  LS
-                </span>
-                <div>
-                  <p className="font-extrabold text-white">RCCG Livingspring Church Dundee</p>
-                  <p className="text-xs" style={{ color: "rgba(255,255,255,0.55)" }}>
-                    Worship. Community. Transformation.
-                  </p>
-                </div>
-              </div>
-              <p
-                className="mt-4 text-xs leading-6"
-                style={{ color: "rgba(255,255,255,0.65)" }}
-              >
-                A welcoming church in Dundee helping people grow in faith, find
-                community, and experience the love of Jesus.
-              </p>
-            </div>
-
-            {/* Col 2 */}
-            <div>
-              <h3
-                className="text-xs font-bold uppercase tracking-widest"
-                style={{ color: "rgba(255,255,255,0.55)" }}
-              >
-                Quick Links
-              </h3>
-              <div className="mt-3 flex flex-col gap-0.5">
-                {footerLinks.map((link) => (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    className="inline-flex items-center justify-center py-1 text-xs transition hover:text-white lg:justify-start"
-                    style={{ color: "rgba(255,255,255,0.75)" }}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* Col 3 */}
-            <div>
-              <h3
-                className="text-xs font-bold uppercase tracking-widest"
-                style={{ color: "rgba(255,255,255,0.55)" }}
-              >
-                Service Times
-              </h3>
-              <div className="mt-4 flex flex-col gap-2">
-                {serviceTimes.map((s) => (
-                  <p key={s.day} className="py-1 text-sm" style={{ color: "rgba(255,255,255,0.75)" }}>
-                    {s.day}: {s.time}
-                  </p>
-                ))}
-              </div>
-            </div>
-
-          </div>
-
-          {/* Copyright */}
-          <div
-            className="mt-8 border-t pt-5 text-xs"
-            style={{
-              borderColor: "rgba(255,255,255,0.1)",
-              color: "rgba(255,255,255,0.5)",
-            }}
-          >
-            © {new Date().getFullYear()} RCCG Livingspring Church Dundee. All rights reserved.
-          </div>
-        </div>
-      </footer>
-
     </div>
   );
 }

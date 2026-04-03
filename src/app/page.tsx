@@ -311,7 +311,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-4 pb-4 pt-7 sm:px-10 lg:px-16">
+      <section className="px-4 py-4 sm:px-10 lg:px-16">
         <div className="mx-auto max-w-7xl">
           <p
             className="text-xs font-bold uppercase tracking-widest"
@@ -319,15 +319,15 @@ export default function Home() {
           >
             Service Times
           </p>
-          <h2 className="mt-2 text-2xl font-extrabold text-slate-900 sm:text-3xl">
+          <h2 className="mt-1 text-2xl font-extrabold text-slate-900 sm:text-3xl">
             Gather with us throughout the week
           </h2>
-          <p className="mt-2 text-sm leading-6 text-slate-500 sm:text-base sm:leading-7">
+          <p className="mt-1 text-sm leading-6 text-slate-500 sm:text-base sm:leading-7">
             Whether you are visiting for the first time or looking for a church family
             in Dundee, there is a place for you here.
           </p>
 
-          <div className="mt-5 grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+          <div className="mt-3 grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
             {serviceTimes.map((service) => (
               <article
                 key={service.day}
@@ -369,9 +369,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-4 pb-6 pt-4 sm:px-10 lg:px-16">
+      <section className="px-4 py-4 sm:px-10 lg:px-16">
         <div
-          className="mx-auto max-w-7xl rounded-3xl px-4 py-8 sm:px-10 sm:py-10 lg:px-12"
+          className="mx-auto max-w-7xl rounded-3xl px-4 py-4 sm:px-10 lg:px-12"
           style={{ backgroundColor: "#F0F4F8" }}
         >
           <p
@@ -380,11 +380,11 @@ export default function Home() {
           >
             Quick Links
           </p>
-          <h2 className="mt-2 text-2xl font-extrabold text-slate-900 sm:text-3xl lg:text-4xl">
+          <h2 className="mt-1 text-2xl font-extrabold text-slate-900 sm:text-3xl lg:text-4xl">
             Take the next step with us
           </h2>
 
-          <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {quickLinks.map((item) => (
               <Link
                 key={item.title}
@@ -511,7 +511,7 @@ export default function Home() {
                       fontSize: "1.4rem",
                       fontWeight: 800,
                       color: "white",
-                      marginTop: "1.5rem",
+                      marginTop: "0.75rem",
                     }}
                   >
                     {item.title}
@@ -533,14 +533,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-4 pb-6 pt-4 sm:px-10 lg:px-16">
+      <section className="px-4 py-4 sm:px-10 lg:px-16">
         <div
-          className="mx-auto max-w-7xl rounded-3xl px-4 py-10 text-white sm:px-10 sm:py-12 lg:px-14"
+          className="mx-auto max-w-7xl rounded-3xl px-4 py-5 text-white sm:px-10 lg:px-14"
           style={{
             background: "linear-gradient(135deg, #1E5C35 0%, #267A45 50%, #1E4D9B 100%)",
           }}
         >
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-xl">
               <p
                 className="text-xs font-bold uppercase tracking-widest"

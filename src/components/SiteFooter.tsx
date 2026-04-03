@@ -40,31 +40,47 @@ const footerLinks = [
 export default function SiteFooter() {
   return (
     <footer style={{ backgroundColor: "#10233F", margin: 0, padding: 0 }}>
-      <div className="mx-auto max-w-7xl px-6 py-8 sm:px-10 lg:px-16">
-        <div className="grid gap-8 text-center lg:grid-cols-3 lg:text-left">
+      <style>{`
+        @media (min-width: 768px) {
+          .footer-quick-links { grid-template-columns: repeat(3, 1fr) !important; }
+          .footer-service-times { grid-template-columns: repeat(3, 1fr) !important; }
+        }
+      `}</style>
+      <div className="mx-auto max-w-7xl px-6 py-4">
+        <div className="grid gap-4 text-center lg:grid-cols-3 lg:text-left">
           <div>
-            <div className="flex items-center justify-center gap-3 lg:justify-start">
-              <Image
-                src="/logo.png"
-                alt="RCCG Livingspring Church Dundee Logo"
-                width={70}
-                height={70}
-                className="h-[55px] w-[55px] sm:h-[70px] sm:w-[70px]"
-                style={{
-                  objectFit: "contain",
-                  flexShrink: 0,
-                }}
-              />
+            <div className="flex items-center justify-center lg:justify-start" style={{ gap: "8px" }}>
+              <div style={{
+                backgroundColor: "white",
+                borderRadius: "8px",
+                padding: "4px",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "fit-content",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.3)",
+                flexShrink: 0,
+              }}>
+                <Image
+                  src="/logo.png"
+                  alt="RCCG Livingspring Church Dundee Logo"
+                  width={35}
+                  height={35}
+                  style={{ objectFit: "contain", width: 35, height: 35 }}
+                />
+              </div>
               <div>
-                <p className="font-extrabold text-white">RCCG Livingspring Church Dundee</p>
-                <p className="text-xs" style={{ color: "rgba(255,255,255,0.55)" }}>
+                <p className="font-extrabold text-white" style={{ fontSize: "13px" }}>
+                  RCCG Livingspring Church Dundee
+                </p>
+                <p style={{ color: "rgba(255,255,255,0.55)", fontSize: "10px" }}>
                   Worship. Community. Transformation.
                 </p>
               </div>
             </div>
             <p
-              className="mt-4 text-xs leading-6"
-              style={{ color: "rgba(255,255,255,0.65)" }}
+              className="mt-2 leading-5"
+              style={{ color: "rgba(255,255,255,0.65)", fontSize: "10px" }}
             >
               A welcoming church in Dundee helping people grow in faith, find community,
               and experience the love of Jesus.
@@ -73,18 +89,25 @@ export default function SiteFooter() {
 
           <div>
             <h3
-              className="text-xs font-bold uppercase tracking-widest"
-              style={{ color: "rgba(255,255,255,0.55)" }}
+              className="font-bold uppercase tracking-widest"
+              style={{ color: "rgba(255,255,255,0.55)", fontSize: "10px" }}
             >
               Quick Links
             </h3>
-            <div className="mt-3 flex flex-col gap-0.5">
+            <div
+              className="footer-quick-links mt-2"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(1, 1fr)",
+                gap: "4px",
+              }}
+            >
               {footerLinks.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="inline-flex items-center justify-center py-1 text-xs transition hover:text-white lg:justify-start"
-                  style={{ color: "rgba(255,255,255,0.75)" }}
+                  className="inline-flex items-center justify-center transition hover:text-white lg:justify-start"
+                  style={{ color: "rgba(255,255,255,0.75)", fontSize: "11px", padding: "1px 0" }}
                 >
                   {link.label}
                 </Link>
@@ -94,17 +117,23 @@ export default function SiteFooter() {
 
           <div>
             <h3
-              className="text-xs font-bold uppercase tracking-widest"
-              style={{ color: "rgba(255,255,255,0.55)" }}
+              className="font-bold uppercase tracking-widest"
+              style={{ color: "rgba(255,255,255,0.55)", fontSize: "10px" }}
             >
               Service Times
             </h3>
-            <div className="mt-4 flex flex-col gap-2">
+            <div
+              className="footer-service-times mt-2"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(1, 1fr)",
+                gap: "4px",
+              }}
+            >
               {serviceTimes.map((service) => (
                 <p
                   key={service.day}
-                  className="py-1 text-sm"
-                  style={{ color: "rgba(255,255,255,0.75)" }}
+                  style={{ color: "rgba(255,255,255,0.75)", fontSize: "11px", padding: "1px 0" }}
                 >
                   {service.day}: {service.time}
                 </p>
@@ -114,14 +143,16 @@ export default function SiteFooter() {
         </div>
 
         <div
-          className="mt-8 flex flex-col items-center gap-4 border-t pt-5 text-xs sm:flex-row sm:justify-between"
+          className="mt-3 flex flex-col items-center gap-2 border-t pt-2 sm:flex-row sm:justify-between"
           style={{
             borderColor: "rgba(255,255,255,0.1)",
             color: "rgba(255,255,255,0.5)",
           }}
         >
-          <p>© {new Date().getFullYear()} RCCG Livingspring Church Dundee. All rights reserved.</p>
-          <div style={{ display: "flex", gap: 8 }}>
+          <p style={{ fontSize: "10px" }}>
+            © {new Date().getFullYear()} RCCG Livingspring Church Dundee. All rights reserved.
+          </p>
+          <div style={{ display: "flex", gap: 6 }}>
             {socialLinks.map((item) => (
               <Link
                 key={item.label}
@@ -129,15 +160,15 @@ export default function SiteFooter() {
                 aria-label={item.label}
                 className="flex shrink-0 items-center justify-center rounded-full transition-all duration-200 hover:bg-white/[0.15]"
                 style={{
-                  width: 36,
-                  height: 36,
+                  width: 28,
+                  height: 28,
                   border: "1.5px solid rgba(255,255,255,0.4)",
                   color: "#FFFFFF",
                 }}
               >
                 <svg
-                  width="15"
-                  height="15"
+                  width="12"
+                  height="12"
                   viewBox="0 0 24 24"
                   fill={item.stroke ? "none" : "currentColor"}
                   stroke={item.stroke ? "currentColor" : "none"}

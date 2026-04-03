@@ -67,7 +67,7 @@ export default function PageHero({ title, subtitle }: PageHeroProps) {
       }}
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_26%),radial-gradient(circle_at_bottom_left,rgba(216,243,226,0.16),transparent_28%)]" />
-      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
         <nav
           aria-label="Breadcrumb"
           className="flex flex-wrap items-center gap-2 text-sm text-white/80"
@@ -90,11 +90,11 @@ export default function PageHero({ title, subtitle }: PageHeroProps) {
           })}
         </nav>
 
-        <div className="mt-6 max-w-3xl">
+        <div className="mt-3 max-w-3xl">
           <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
             {title}
           </h1>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-white/85 sm:text-lg">
+          <p className="mt-2 max-w-2xl text-base leading-7 text-white/85 sm:text-lg">
             {subtitle}
           </p>
         </div>

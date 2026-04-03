@@ -102,12 +102,24 @@ export default function Navbar() {
               R
             </span>
             <span className="min-w-0">
-              <span className="block truncate text-base font-extrabold text-white sm:text-lg">
+              <span
+                className="block truncate text-base sm:text-lg"
+                style={{
+                  color: "white",
+                  fontWeight: 800,
+                  letterSpacing: "0.02em",
+                  textShadow: "1px 1px 0px #0a1f3d, 2px 2px 0px #0a1f3d, 3px 3px 0px rgba(0,0,0,0.2), 0px 0px 20px rgba(30,77,155,0.4)",
+                }}
+              >
                 RCCG Livingspring
               </span>
               <span
-                className="block truncate text-xs font-medium sm:text-sm"
-                style={{ color: "#93C5FD" }}
+                className="block truncate text-xs sm:text-sm"
+                style={{
+                  color: "#D8F3E2",
+                  fontWeight: 600,
+                  textShadow: "1px 1px 0px #0d3320, 2px 2px 0px rgba(0,0,0,0.2), 0px 0px 15px rgba(30,92,53,0.5)",
+                }}
               >
                 Church Dundee
               </span>
@@ -182,7 +194,7 @@ export default function Navbar() {
             >
               <Link
                 href={link.href}
-                className={`flex items-center justify-center gap-1.5 px-2 py-4 text-center text-[11px] font-semibold tracking-[0.16em] transition xl:text-xs ${
+                className={`flex items-center justify-center gap-1.5 px-2 py-4 text-center text-[11px] font-bold tracking-[0.16em] transition xl:text-xs ${
                   link.featured
                     ? "self-center rounded-full px-5 py-2 hover:!bg-[#267A45]"
                     : link.label === "CONTACT US"
@@ -264,7 +276,7 @@ export default function Navbar() {
                       <Link
                         key={child.label}
                         href={child.href}
-                        className="flex items-center border-l-4 px-4 py-3 text-sm font-medium transition hover:bg-slate-50"
+                        className="flex items-center border-l-4 px-4 py-3 text-sm font-medium transition-colors duration-200 hover:bg-[#1E5C35] hover:text-white"
                         style={{
                           borderLeftColor: isActiveLink(child.href) ? "#1E5C35" : "transparent",
                           color: isActiveLink(child.href) ? "#1E4D9B" : "#0F1E35",

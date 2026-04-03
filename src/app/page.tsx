@@ -100,7 +100,7 @@ const quickLinkCardTheme: Record<string, { gradient: string; glow: string; glowH
 
 export default function Home() {
   return (
-    <div style={{ margin: 0, padding: 0, backgroundColor: "#ffffff" }}>
+    <div style={{ margin: 0, padding: 0, position: "relative" }}>
 
       {/* ── HERO ── */}
       <section
@@ -598,12 +598,12 @@ export default function Home() {
               >
                 Quick Links
               </h3>
-              <div className="mt-4 flex flex-col gap-2">
+              <div className="mt-3 flex flex-col gap-0.5">
                 {footerLinks.map((link) => (
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="inline-flex min-h-[44px] items-center justify-center text-sm transition hover:text-white lg:justify-start"
+                    className="inline-flex items-center justify-center py-1 text-xs transition hover:text-white lg:justify-start"
                     style={{ color: "rgba(255,255,255,0.75)" }}
                   >
                     {link.label}
